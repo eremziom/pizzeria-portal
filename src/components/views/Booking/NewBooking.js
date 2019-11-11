@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Booking.scss';
+import styles from './Booking.module.scss';
 
 const NewBooking = () => {
   return(

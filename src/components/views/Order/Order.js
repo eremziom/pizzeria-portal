@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Order.scss';
+import styles from './Order.module.scss';
 
 const Order = () => {
   let pathArray = window.location.pathname.split('/');
-  let id = pathArray[3];
+  let id = pathArray[4];
 
   return(
     <div className={styles.component}>

@@ -3,7 +3,7 @@ import styles from './Event.scss';
 
 const Event = () => {
   let pathArray = window.location.pathname.split('/');
-  let id = pathArray[3];
+  let id = pathArray[4];
   return(
     <div className={styles.component}>
       <h2>Event VIEW</h2>

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Booking.scss';
+import styles from './Booking.module.scss';
 
 const Booking = () => {
   let pathArray = window.location.pathname.split('/');
-  let id = pathArray[3];
+  let id = pathArray[4];
   return(
     <div className={styles.component}>
       <h2>Booking VIEW</h2>
