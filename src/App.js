@@ -25,12 +25,12 @@ function App() {
           <Route exact path={process.env.PUBLIC_URL + '/Tables'} component={Tables} />
           <Route exact path={process.env.PUBLIC_URL + '/Kitchen'} component={Kitchen} />
           <Route exact path={process.env.PUBLIC_URL + '/Waiter'} component={Waiter} />
-          <Route exact path={process.env.PUBLIC_URL + '/Booking'} component={NewBooking} />
-          <Route exact path={process.env.PUBLIC_URL + '/Booking/:id'} component={Booking} />
-          <Route exact path={process.env.PUBLIC_URL + '/Event'} component={NewEvent} />
-          <Route exact path={process.env.PUBLIC_URL + '/Event/:id'} component={Event} />
-          <Route exact path={process.env.PUBLIC_URL + '/Order'} component={NewOrder} />
-          <Route exact path={process.env.PUBLIC_URL + '/Order/:id'} component={Order} />
+          <Route exact path={process.env.PUBLIC_URL + '/Tables/Booking'} component={NewBooking} />
+          <Route exact path={process.env.PUBLIC_URL + '/Tables/Booking/:id'} component={Booking} />
+          <Route exact path={process.env.PUBLIC_URL + '/Tables/Event'} component={NewEvent} />
+          <Route exact path={process.env.PUBLIC_URL + '/Tables/Event/:id'} component={Event} />
+          <Route exact path={process.env.PUBLIC_URL + '/Waiter/Order'} component={NewOrder} />
+          <Route exact path={process.env.PUBLIC_URL + '/Waiter/Order/:id'} component={Order} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
