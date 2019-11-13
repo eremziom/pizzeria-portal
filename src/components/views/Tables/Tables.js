@@ -14,14 +14,14 @@ import {Link} from 'react-router-dom';
 
 let hourObject = [];
 
-const bookings = [
+export const bookings = [
   {id: '1', date: '20.11.2019', length: 3, persons: 2, table: 2, start: 12},
   {id: '2', date: '20.11.2019', length: 2, persons: 4, table: 6, start: 15},
   {id: '3', date: '20.11.2019', length: 4, persons: 7, table: 1, start: 17},
   {id: '4', date: '20.11.2019', length: 2, persons: 3, table: 5, start: 12},
 ];
 
-const events = [
+export const events = [
   {id: '1', date: '20.11.2019', length: 3, persons: 4, table: 3, start: 20, event: true},
   {id: '2', date: '20.11.2019', length: 3, persons: 4, table: 4, start: 20, event: true},
 ];
