@@ -1,16 +1,15 @@
 import React from 'react';
 import styles from './Homepage.module.scss';
 import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Grid from '@material-ui/core/Grid';
 
-import {utils} from '../../../utils/utils';
+//import {utils} from '../../../utils/utils';
 
-let hourObject = [];
 
 const bookings = [
   {id: '1', date: '20.11.2019', length: 3, persons: 2, table: 2, start: 12},
@@ -24,80 +23,53 @@ const events = [
   {id: '2', date: '20.11.2019', length: 3, persons: 4, table: 4, start: 20, event: true},
 ];
 
-const tables = ['table1', 'table2', 'table3', 'table4', 'table5', 'table6'];
 
-const renderHours = () => {
-  hourObject = [];
-  let indexCounter = 0; //variable to find correct hourObject array index
-  for(let a=12; a<24; a=a+0.5){
-    const hours = {};
-    hours['hour'] = a;
-    hourObject.push(hours);
-    for(let book of bookings){
-      let bookDuration = book.length + book.start;
-      if(a >= book.start && a < bookDuration){
-        const tableNumber = 'table' + book.table; //variable to set table number key
-        hourObject[indexCounter][tableNumber] = book;
-      }
-    }
-    for(let event of events){
-      let eventDuration = event.length + event.start;
-      if(a >= event.start && a < eventDuration){
-        const tableNumber = 'table' + event.table; //variable to set table number key
-        hourObject[indexCounter][tableNumber] = event;
-      }
-    }
-    indexCounter ++;
-  }
-  console.log(hourObject);
-};
-
-const renderEvents = (hour, tableNum) => {
-  if(hour[tableNum]){
-
-    return (
-      <Button className={styles.but} variant="contained" color="primary">EVENT id {hour[tableNum].id}</Button>
-    );
-  } else {
-    return (
-      <Button className={styles.but} variant="contained" >FREE</Button>
-    );
-  }
-};
 
 const Homepage = () => {
+  const [spacing] = React.useState(2);
   return(
     <Paper className={styles.component}>
-      <Table className={styles.tab}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Hour</TableCell>
-            <TableCell>Table 1</TableCell>
-            <TableCell>Table 2</TableCell>
-            <TableCell>Table 3</TableCell>
-            <TableCell>Table 4</TableCell>
-            <TableCell>Table 5</TableCell>
-            <TableCell>Table 6</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {renderHours()}
-          {hourObject.length ? hourObject.map(hour => (
-            <TableRow key={hour.id}>
-              <TableCell className={styles.cell}>
-                {utils.numberToHour(hour.hour)}
-              </TableCell>
-              {tables.map(tableNum => (
-                <TableCell key={tableNum.id} className={styles.cell}>
-                  {hour[tableNum] && !hour[tableNum].event
-                    ? <Button className={styles.but} variant="contained" color="primary">BOOKED id {hour[tableNum].id}</Button>
-                    : renderEvents(hour, tableNum)}
-                </TableCell>
-              ))}
-            </TableRow>
-          )) : '' }
-        </TableBody>
-      </Table>
+      <Typography>
+        BOOKINGS and EVENTS for TODAY!
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={spacing}>
+            {bookings.map(value => (
+              <Grid key={value} item>
+                <Card >
+                  <CardContent>
+                    <Typography  color="textSecondary" gutterBottom>
+                      Word of the Day
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Edit</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={spacing}>
+            {events.map(value => (
+              <Grid key={value} item>
+                <Card >
+                  <CardContent>
+                    <Typography  color="textSecondary" gutterBottom>
+                      Word of the Day
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Edit</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
     </Paper>
   );
 };
