@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import {utils} from '../../../utils/utils';
 
-const hourObject = [];
+let hourObject = [];
 
 const bookings = [
   {id: '1', date: '20.11.2019', length: 3, persons: 2, table: 2, start: 12},
@@ -22,6 +22,7 @@ const bookings = [
 const tables = ['table1', 'table2', 'table3', 'table4', 'table5', 'table6'];
 
 const renderHours = () => {
+  hourObject = [];
   let indexCounter = 0; //variable to find correct hourObject array index
   for(let a=12; a<24; a=a+0.5){
     const hours = {};
@@ -36,7 +37,6 @@ const renderHours = () => {
     }
     indexCounter ++;
   }
-  console.log(hourObject);
 };
 
 const Homepage = () => {
@@ -64,7 +64,7 @@ const Homepage = () => {
               {tables.map(tableNum => (
                 <TableCell key={tableNum.id} className={styles.cell}>
                   {hour[tableNum]
-                    ? <Button className={styles.but} variant="contained" color="primary">BOOKED</Button>
+                    ? <Button className={styles.but} variant="contained" color="primary">BOOKED id {hour[tableNum].id}</Button>
                     : <Button className={styles.but} variant="contained" >FREE</Button>}
                 </TableCell>
               ))}
