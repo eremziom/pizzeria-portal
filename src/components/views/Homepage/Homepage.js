@@ -19,6 +19,11 @@ const bookings = [
   {id: '4', date: '20.11.2019', length: 2, persons: 3, table: 5, start: 12},
 ];
 
+const events = [
+  {id: '1', date: '20.11.2019', length: 3, persons: 4, table: 3, start: 20, event: true},
+  {id: '2', date: '20.11.2019', length: 3, persons: 4, table: 4, start: 20, event: true},
+];
+
 const tables = ['table1', 'table2', 'table3', 'table4', 'table5', 'table6'];
 
 const renderHours = () => {
@@ -35,7 +40,28 @@ const renderHours = () => {
         hourObject[indexCounter][tableNumber] = book;
       }
     }
+    for(let event of events){
+      let eventDuration = event.length + event.start;
+      if(a >= event.start && a < eventDuration){
+        const tableNumber = 'table' + event.table; //variable to set table number key
+        hourObject[indexCounter][tableNumber] = event;
+      }
+    }
     indexCounter ++;
+  }
+  console.log(hourObject);
+};
+
+const renderEvents = (hour, tableNum) => {
+  if(hour[tableNum]){
+
+    return (
+      <Button className={styles.but} variant="contained" color="primary">EVENT id {hour[tableNum].id}</Button>
+    );
+  } else {
+    return (
+      <Button className={styles.but} variant="contained" >FREE</Button>
+    );
   }
 };
 
@@ -63,9 +89,9 @@ const Homepage = () => {
               </TableCell>
               {tables.map(tableNum => (
                 <TableCell key={tableNum.id} className={styles.cell}>
-                  {hour[tableNum]
+                  {hour[tableNum] && !hour[tableNum].event
                     ? <Button className={styles.but} variant="contained" color="primary">BOOKED id {hour[tableNum].id}</Button>
-                    : <Button className={styles.but} variant="contained" >FREE</Button>}
+                    : renderEvents(hour, tableNum)}
                 </TableCell>
               ))}
             </TableRow>
