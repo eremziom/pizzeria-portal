@@ -6,7 +6,7 @@ import Login from './components/views/Login/Login';
 import Homepage from './components/views/Homepage/Homepage';
 import Tables from './components/views/Tables/Tables';
 import Kitchen from './components/views/Kitchen/Kitchen';
-import Waiter from './components/views/Waiter/Waiter';
+import Waiter from './components/views/Waiter/WaiterContainer';
 import Booking from './components/views/Booking/Booking';
 import Event from './components/views/Event/Event';
 import NewBooking from './components/views/Booking/NewBooking';
