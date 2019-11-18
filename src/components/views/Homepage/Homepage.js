@@ -7,40 +7,30 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Grid from '@material-ui/core/Grid';
+import {bookings, events} from '../Tables/Tables';
 
-//import {utils} from '../../../utils/utils';
-
-
-const bookings = [
-  {id: '1', date: '20.11.2019', length: 3, persons: 2, table: 2, start: 12},
-  {id: '2', date: '20.11.2019', length: 2, persons: 4, table: 6, start: 15},
-  {id: '3', date: '20.11.2019', length: 4, persons: 7, table: 1, start: 17},
-  {id: '4', date: '20.11.2019', length: 2, persons: 3, table: 5, start: 12},
-];
-
-const events = [
-  {id: '1', date: '20.11.2019', length: 3, persons: 4, table: 3, start: 20, event: true},
-  {id: '2', date: '20.11.2019', length: 3, persons: 4, table: 4, start: 20, event: true},
-];
-
+import {utils} from '../../../utils/utils';
 
 
 const Homepage = () => {
   const [spacing] = React.useState(2);
   return(
     <Paper className={styles.component}>
-      <Typography>
+      <Typography className={styles.head}>
         BOOKINGS and EVENTS for TODAY!
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={spacing}>
-            {bookings.map(value => (
-              <Grid key={value} item>
+            {bookings.map(book => (
+              <Grid key={book} item>
                 <Card >
                   <CardContent>
                     <Typography  color="textSecondary" gutterBottom>
-                      Word of the Day
+                      <p>Table: {book.table}</p>
+                      <p>Hours: {utils.numberToHour(book.start) + ' - ' + utils.numberToHour(book.start + book.length)}</p>
+                      <p>Persons: {book.persons}</p>
+                      <p>Notes:</p>
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -53,12 +43,16 @@ const Homepage = () => {
         </Grid>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={spacing}>
-            {events.map(value => (
-              <Grid key={value} item>
+            {events.map(event => (
+              <Grid key={event} item>
                 <Card >
                   <CardContent>
                     <Typography  color="textSecondary" gutterBottom>
-                      Word of the Day
+                      <p>Event number: {event.id}</p>
+                      <p>Table: {event.table}</p>
+                      <p>Hours: {utils.numberToHour(event.start) + ' - ' + utils.numberToHour(event.start + event.length)}</p>
+                      <p>Persons: {event.persons}</p>
+                      <p>Notes:</p>
                     </Typography>
                   </CardContent>
                   <CardActions>

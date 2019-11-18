@@ -75,7 +75,7 @@ const Waiter = () => (
             <TableCell>
               {row.order && (
                 <Button className={styles.test} component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                  {row.order}{console.log(`${process.env.PUBLIC_URL}/waiter/order/${row.order}`)}
+                  {row.order}
                 </Button>
               )}
             </TableCell>

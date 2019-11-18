@@ -10,7 +10,6 @@ import {utils} from '../../../utils/utils';
 const Booking = () => {
   let pathArray = window.location.pathname.split('/');
   let bookId = pathArray[4];
-  console.log(bookId);
 
   return(
     <Card>
